@@ -68,10 +68,10 @@ if __name__ == '__main__':
     lr = 1e-4
     setup_seed(random_seed)
     model_name = "IBN_1024_3_preN"
-    train_dataset = [sorted(glob.glob("../data/dataset4/train/image/*.png")),
-                     sorted(glob.glob("../data/dataset4/train/label/*.png"))]
-    val_dataset = [sorted(glob.glob("../data/dataset4/val/image/*.png")),
-                   sorted(glob.glob("../data/dataset4/val/label/*.png"))]
+    train_dataset = [sorted(glob.glob("../data/Anshu_data/train/image/*.png")),
+                     sorted(glob.glob("../data/Anshu_data/train/label/*.png"))]
+    val_dataset = [sorted(glob.glob("../data/Anshu_data/val/image/*.png")),
+                   sorted(glob.glob("../data/Anshu_data/val/label/*.png"))]
 
     # train_dataset, val_dataset = split_dataset(dataset, random_seed)
     train_loader, valid_loader = build_dataloader(train_dataset, val_dataset, int(batch_size))
@@ -130,3 +130,4 @@ if __name__ == '__main__':
             valid_logs['precision']), val_recall.append(valid_logs['recall']), val_F1.append(valid_logs['fscore'])
 
     np.save("../user_data/figure_data/figure_{}.npy".format(model_name), [train_loss, val_mIoU, val_precision, val_recall, val_F1])
+
