@@ -17,8 +17,8 @@ DEVICE = 'cuda:0' if torch.cuda.is_available() else 'cpu'
 if __name__ == '__main__':
     model_name = "IBN_1024_3_res18_ttff"
     # 测试数据集
-    test_dataset = [sorted(glob.glob("../data/dataset3/test/image/*.png")),
-                    sorted(glob.glob("../data/dataset3/test/label/*.png"))]
+    test_dataset = [sorted(glob.glob("../data/Anshu_data/test/image/*.png")),
+                    sorted(glob.glob("../data/Anshu_data/test/label/*.png"))]
     # 模型路径
     model = torch.load('../user_data/model_data/seg_model_{}.pth'.format(model_name))
 
@@ -45,3 +45,4 @@ if __name__ == '__main__':
     )
 
     test_epoch.infer_vis(test_loader, evaluate=True, save=True, save_dir='../user_data/infer_result/anshu', suffix=".png")
+
